@@ -223,7 +223,7 @@ func (s Server) resourceTypesHandler(w http.ResponseWriter, r *http.Request) {
 
 	raw, err := json.Marshal(listResponse{
 		TotalResults: len(s.ResourceTypes),
-		ItemsPerPage: params.Count,
+		ItemsPerPage: len(resources),
 		StartIndex:   params.StartIndex,
 		Resources:    resources,
 	})
@@ -259,7 +259,7 @@ func (s Server) resourcesGetHandler(w http.ResponseWriter, r *http.Request, reso
 		TotalResults: page.TotalResults,
 		Resources:    page.resources(resourceType),
 		StartIndex:   params.StartIndex,
-		ItemsPerPage: params.Count,
+		ItemsPerPage: len(page.Resources),
 	})
 	if err != nil {
 		errorHandler(w, r, &errors.ScimErrorInternal)
@@ -328,7 +328,7 @@ func (s Server) schemasHandler(w http.ResponseWriter, r *http.Request) {
 
 	raw, err := json.Marshal(listResponse{
 		TotalResults: len(s.getSchemas()),
-		ItemsPerPage: params.Count,
+		ItemsPerPage: len(resources),
 		StartIndex:   params.StartIndex,
 		Resources:    resources,
 	})
