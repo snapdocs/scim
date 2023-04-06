@@ -2,7 +2,7 @@ package schema
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/elimity-com/scim/optional"
@@ -76,7 +76,7 @@ func TestInvalidAttributeName(t *testing.T) {
 }
 
 func TestJSONMarshalling(t *testing.T) {
-	expectedJSON, err := ioutil.ReadFile("./testdata/schema_test.json")
+	expectedJSON, err := os.ReadFile("./testdata/schema_test.json")
 	if err != nil {
 		t.Errorf("failed to acquire test data")
 		return

@@ -21,7 +21,7 @@
       }
     ],
     "startIndex": 1,
-    "itemsPerPage": 20
+    "itemsPerPage": 1
   },
   "method": "GET",
   "path": "/Groups?filter=displayName+eq+%22displayName%22",
